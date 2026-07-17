@@ -31,7 +31,7 @@ spec:
 
       - name: webapp
 
-        image: myacr.azurecr.io/webapp:v1
+        image: acrakspoc01.azurecr.io/webapp:v1
 
         imagePullPolicy: Always
 
