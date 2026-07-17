@@ -31,7 +31,7 @@ spec:
 
       - name: webapp
 
-        image: acrakspoc01.azurecr.io/webapp:${{ github.sha }}
+        image: acrakspoc01.azurecr.io/webapp:IMAGE_TAG
 
         imagePullPolicy: Always
 
