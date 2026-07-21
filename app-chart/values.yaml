@@ -1,11 +1,9 @@
 # values.yaml
 image:
   repository: acrakspoc01.azurecr.io/webapp
-  tag: "latest"
+  tag: "89433a7470075e4a84b6219ef8a765840e2238dd"
   pullPolicy: IfNotPresent
-
 replicaCount: 2
-
 resources:
   requests:
     cpu: 100m
@@ -13,21 +11,17 @@ resources:
   limits:
     cpu: 500m
     memory: 512Mi
-
 service:
   type: ClusterIP
   port: 80
   targetPort: 3000
-
 env:
   NODE_ENV: production
-
 serviceAccount:
   create: true
   automount: true
   annotations: {}
   name: ""
-
 ingress:
   enabled: false
   className: ""
@@ -38,17 +32,14 @@ ingress:
         - path: /
           pathType: ImplementationSpecific
   tls: []
-
 database:
   secretName: postgres-credentials
-
 httpRoute:
   enabled: false
   annotations: {}
   parentRefs: []
   hostnames: []
   rules: []
-
 autoscaling:
   enabled: false
   minReplicas: 1
