@@ -1,7 +1,7 @@
 # values.yaml
 image:
   repository: acrakspoc01.azurecr.io/webapp
-  tag: "latest"
+  tag: "89433a7470075e4a84b6219ef8a765840e2238dd"
   pullPolicy: IfNotPresent
 
 replicaCount: 2
