@@ -31,7 +31,7 @@ spec:
 
       - name: webapp
 
-        image: acrakspoc01.azurecr.io/webapp:a91d0358dd71706e86a8e08dba71ebf9af9bfea7
+        image: acrakspoc01.azurecr.io/webapp:20d6f8e28db8356c69f0f932628a6557badd0d62
 
         imagePullPolicy: Always
 
