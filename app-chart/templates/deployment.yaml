@@ -1,0 +1,29 @@
+# templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: app
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          envFrom:
+            - secretRef:
+                name: {{ .Values.database.secretName }}
+          ports:
+            - containerPort: {{ .Values.service.targetPort }}
+          env:
+            - name: NODE_ENV
+              value: {{ .Values.env.NODE_ENV | quote }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
