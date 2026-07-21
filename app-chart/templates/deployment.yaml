@@ -2,17 +2,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ include "app-chart.fullname" . }}
+  labels:
+    {{- include "app-chart.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Release.Name }}
+      {{- include "app-chart.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}
+        {{- include "app-chart.selectorLabels" . | nindent 8 }}
     spec:
+      serviceAccountName: {{ include "app-chart.serviceAccountName" . }}
       containers:
         - name: app
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -21,7 +24,8 @@ spec:
             - secretRef:
                 name: {{ .Values.database.secretName }}
           ports:
-            - containerPort: {{ .Values.service.targetPort }}
+            - name: http
+              containerPort: {{ .Values.service.targetPort }}
           env:
             - name: NODE_ENV
               value: {{ .Values.env.NODE_ENV | quote }}
