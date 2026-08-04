@@ -1,0 +1,34 @@
+# app-chart/templates/pvc.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: sharecenter2-nfs-pv-webapp        # ชื่อไม่ซ้ำกับตัวเดิมใน default
+spec:
+  capacity:
+    storage: 32Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  mountOptions:
+    - nfsvers=4.1
+    - rsize=1048576
+    - wsize=1048576
+    - hard
+    - timeo=600
+  nfs:
+    server: fs-vlqfgngfx1tng3xtv.z49.file.storage.azure.net
+    path: /sharecenter2
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sharecenter2-nfs-pvc
+  namespace: webapp                        # ← ต้องตรงกับ namespace ของ Pod
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ""
+  resources:
+    requests:
+      storage: 32Gi
+  volumeName: sharecenter2-nfs-pv-webapp   # ผูกกับ PV ตัวใหม่ที่สร้างคู่กัน
