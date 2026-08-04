@@ -38,4 +38,4 @@ spec:
       volumes:                                           # ← เพิ่มใหม่ อยู่ระดับเดียวกับ containers/serviceAccountName
         - name: sharecenter2-volume
           persistentVolumeClaim:
-            claimName: sharecenter2-nfs-pvc
+            claimName: pvc-sharecenter2
