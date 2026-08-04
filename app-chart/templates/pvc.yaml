@@ -17,7 +17,7 @@ spec:
     - timeo=600
   nfs:
     server: fs-vlqfgngfx1tng3xtv.z49.file.storage.azure.net
-    path: /sharecenter2
+    path: /fs-vlqfgngfx1tng3xtv/sharecenter2
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
