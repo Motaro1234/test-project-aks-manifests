@@ -31,4 +31,4 @@ spec:
   resources:
     requests:
       storage: 32Gi
-  volumeName: pv-sharecenter2              # ผูกกับ PV ตัวใหม่ที่สร้างคู่กัน
+  volumeName: sharecenter2-nfs-pv-webapp             # ผูกกับ PV ตัวใหม่ที่สร้างคู่กัน
