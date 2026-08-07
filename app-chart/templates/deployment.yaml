@@ -32,10 +32,10 @@ spec:
             - name: IMAGES_DIR                          # ← เพิ่มบรรทัดนี้ ในลิสต์ env เดิม
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          volumeMounts:                                 # ← เพิ่มใหม่ อยู่ระดับเดียวกับ ports/env/resources
-            - name: sharecenter2-volume
-              mountPath: /mnt/images
+          volumeMounts:
+            - name: image-storage
+              mountPath: /app/images
       volumes:                                           # ← เพิ่มใหม่ อยู่ระดับเดียวกับ containers/serviceAccountName
-        - name: sharecenter2-volume
+        - name: image-storage
           persistentVolumeClaim:
             claimName: sharecenter2-nfs-pvc
