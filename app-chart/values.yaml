@@ -1,7 +1,7 @@
 # values.yaml
 image:
   repository: acrakspoc01.azurecr.io/webapp
-  tag: "1e2e8cbf9b15dcbed9bfc4245010cb47d9da1f14"
+  tag: "a19f4e7cbcfd51a5e124fcd7bf884eba234e37df"
   pullPolicy: IfNotPresent
 replicaCount: 2
 resources:
